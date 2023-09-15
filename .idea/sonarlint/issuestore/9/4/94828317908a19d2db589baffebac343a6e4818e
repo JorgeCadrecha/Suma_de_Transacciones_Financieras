@@ -1,0 +1,6 @@
+
+W	java:S125"<This block of commented-out lines of code should be removed.(¬õº/8ÃØ…Á©1
+{
+java:S2142^"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8òò‰Á©1
+t
+java:S6204e"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(àËËÃøÿÿÿÿ8ˆéŠÁ©1
