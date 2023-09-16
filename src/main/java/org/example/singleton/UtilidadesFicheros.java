@@ -1,4 +1,4 @@
-package org.example;
+package org.example.singleton;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,6 +8,17 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class UtilidadesFicheros {
+
+    // Singleton
+    private static UtilidadesFicheros instancia;
+    private UtilidadesFicheros() {}
+    public static UtilidadesFicheros getInstancia() {
+        if (instancia == null) {
+            instancia = new UtilidadesFicheros();
+        }
+        return instancia;
+    }
+
     public static long sumarTransacciones(List<String> archivos) {
         long total = 0;
         for (String archivo : archivos) {

@@ -1,4 +1,6 @@
-package org.example;
+package org.example.model;
+
+import org.example.singleton.UtilidadesFicheros;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,10 +11,14 @@ import java.util.Scanner;
 public class ProcesadorContabilidad implements Runnable {
     private String archivo;
 
-    public ProcesadorContabilidad(String archivo) {
+    ProcesadorContabilidad(String archivo) {
         this.archivo = archivo;
     }
 
+    // Factory method
+    public static ProcesadorContabilidad crearProcesadorContabilidad(String archivo) {
+        return new ProcesadorContabilidad(archivo);
+    }
     @Override
     public void run() {
         try {

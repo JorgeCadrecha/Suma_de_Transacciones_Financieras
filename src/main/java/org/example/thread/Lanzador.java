@@ -1,4 +1,8 @@
-package org.example;
+package org.example.thread;
+
+import org.example.factory.ProcesadorContabilidadFactory;
+import org.example.model.ProcesadorContabilidad;
+import org.example.singleton.UtilidadesFicheros;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -9,6 +13,9 @@ import java.util.stream.Collectors;
 
 public class Lanzador {
     public static void lanzar() {
+        // Obtener la instancia de UtilidadesFicheros (Singleton)
+        UtilidadesFicheros utilidadesFicheros = UtilidadesFicheros.getInstancia();
+
         List<String> archivos = Arrays.asList(
                 "informatica.txt",
                 "gerencia.txt",
@@ -17,19 +24,21 @@ public class Lanzador {
                 "recursos_humanos.txt"
         );
 
-        UtilidadesFicheros.generarArchivoRecibos("gerencia", 100);
-        UtilidadesFicheros.generarArchivoRecibos("informatica", 150);
-        UtilidadesFicheros.generarArchivoRecibos("contabilidad", 200);
-        UtilidadesFicheros.generarArchivoRecibos("comercio", 75);
-        UtilidadesFicheros.generarArchivoRecibos("recursos_humanos", 50);
+        utilidadesFicheros.generarArchivoRecibos("gerencia", 100);
+        utilidadesFicheros.generarArchivoRecibos("informatica", 150);
+        utilidadesFicheros.generarArchivoRecibos("contabilidad", 200);
+        utilidadesFicheros.generarArchivoRecibos("comercio", 75);
+        utilidadesFicheros.generarArchivoRecibos("recursos_humanos", 50);
 
-        // Crea y lanza un hilo para cada archivo
+        // Crear y lanzar un hilo para cada archivo usando ProcesadorContabilidadFactory
         List<Thread> hilos = new ArrayList<>();
         for (String archivo : archivos) {
-            Thread thread = new Thread(new ProcesadorContabilidad(archivo));
+            ProcesadorContabilidad procesador = ProcesadorContabilidadFactory.crearProcesadorContabilidad(archivo);
+            Thread thread = new Thread(procesador);
             hilos.add(thread);
             thread.start();
         }
+
 
         // Espera a que todos los hilos terminen
         for (Thread thread : hilos) {
