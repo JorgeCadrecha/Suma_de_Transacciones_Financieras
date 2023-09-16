@@ -1,61 +1,5 @@
 package org.example;
 
-/*
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
-public class Lanzador {
-
-    public static void main(String[] args) {
-        if (args.length == 0) {
-            System.err.println("Debe proporcionar al menos un archivo como argumento.");
-            return;
-        }
-
-        ExecutorService executor = Executors.newFixedThreadPool(args.length);
-
-        for (String archivo : args) {
-            Runnable procesador = new ProcesadorContabilidad(archivo);
-            executor.execute(procesador);
-        }
-
-        executor.shutdown();
-
-        try {
-            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-        } catch (InterruptedException e) {
-            System.err.println("Error al esperar a que terminen los procesos: " + e.getMessage());
-        }
-
-        // Calcular la suma global
-        calcularSumaGlobal(args);
-    }
-
-    private static void calcularSumaGlobal(String[] archivos) {
-        long sumaGlobal = 0;
-
-        for (String archivo : archivos) {
-            try {
-                sumaGlobal += UtilidadesFicheros.obtenerSumaTransacciones(archivo + ".res");
-            } catch (IOException e) {
-                System.err.println("Error al obtener la suma del archivo " + archivo + ": " + e.getMessage());
-            }
-        }
-
-        // Guardar la suma global en un archivo
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("Resultado_global.txt"))) {
-            bw.write(String.valueOf(sumaGlobal));
-        } catch (IOException e) {
-            System.err.println("Error al guardar el resultado global: " + e.getMessage());
-        }
-    }
-}
-*/
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -64,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lanzador {
-    public static void main(String[] args) {
+    public static void lanzar() {
         List<String> archivos = Arrays.asList(
                 "informatica.txt",
                 "gerencia.txt",
