@@ -1,5 +1,7 @@
 # Suma_de_Transacciones_Financieras
 
+## Nota
+Mi repositorio es: https://github.com/JorgeCadrecha/Suma_de_Transacciones_Financieras.git
 
 ## Contexto: 
 Eres un desarrollador de software en una gran corporación con múltiples departamentos como informática, gerencia, contabilidad, comercio y recursos humanos. Cada departamento realiza varias transacciones financieras diarias, y todas estas transacciones se registran y almacenan en archivos de texto individuales correspondientes a cada departamento.
